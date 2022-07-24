@@ -1,8 +1,10 @@
-<section class="header">
-<h1 class="header-title">My App</h1>
-</section>
-<section class="content">
-  <div class="product-grid">
-    <app-card *ngFor=" let character of rickresults;index as i" [title]="rickresults[i].name"[img]="rickresults[i].image"[price]="rickresults[i].species"></app-card>
-  </div>
-</section>
+<div>
+  <section class="header">
+  <h1 class="header-title">My App</h1>
+  </section>
+  <section class="content" (window:scroll)="onScrollDown()">
+    <div class="product-grid">
+      <app-card *ngFor=" let character of rickresults;index as i" [title]="rickresults[i].name"[img]="rickresults[i].image"[price]="rickresults[i].species"></app-card>
+    </div>
+  </section>
+</div>

@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Product } from './models/product.model';
 
 @Component({
   selector: 'app-root',
@@ -8,39 +7,23 @@ import { Product } from './models/product.model';
 })
 export class AppComponent {
   rickresults:any;
-
-  Response:any = fetch(`https://rickandmortyapi.com/api/character/?page=${2}`)
+  number = 1;
+  scroll = 2500;
+  Response:any = fetch(`https://rickandmortyapi.com/api/character/?page=${1}`)
   .then(response => response.json())
   .then(data => {
     this.rickresults = data.results
-    console.log(data)
   });
-  products:Product[]=[
-    {
-      title:'product1',
-      price:100,
-      img:'https://picsum.photos/200/200'
-    },
-    {
-      title:'product2',
-      price:200,
-      img:'https://picsum.photos/201/200'
-    },
-    {
-      title:'product3',
-      price:400,
-      img:'https://picsum.photos/202/200'
-    },
-    {
-      title:'product4',
-      price:700,
-      img:'https://picsum.photos/203/200'
-    },
-    {
-      title:'product5',
-      price:1000,
-      img:'https://picsum.photos/204/200'
-    },
-  ]
-
+  async onScrollDown(){
+    console.log(this.number)
+  if(window.scrollY>this.scroll&& this.number<42){
+    this.scroll = this.scroll+2500;
+    const Responsed= await fetch(`https://rickandmortyapi.com/api/character/?page=${this.number+=1}`)
+    .then(response => response.json())
+    .then(data => {
+      this.rickresults.push(...data.results)
+    });
+    }
+  }
 }
+

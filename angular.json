@@ -107,5 +107,8 @@
       }
     }
   },
-  "defaultProject": "proyextang"
+  "defaultProject": "proyextang",
+  "cli": {
+    "analytics": "f9c06bd5-aa57-48f4-a2f4-8f6c4ac85da6"
+  }
 }
